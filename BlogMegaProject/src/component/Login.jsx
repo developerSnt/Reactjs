@@ -46,8 +46,15 @@ export default function Login() {
         {error && <p className='text-red-600 mt-8'> {error}</p>}
         <form onSubmit={handleSubmit(login)} className='mt-8'>
               
-       <div>
+       <div className='space-y-5'>
+        <Input label="Email : " 
+        placeholder="Enter Your Email"
+        type="email" {...register("email", {required: true, validate :{ matchPatern : (value) => /^\w+([.-]?\w+)*@\w([.-]?\w+)*(\.\w{2,3})+$/.test(value) || "Email address must be valid address",}})} />
         
+        <Input label="password : " type="password" {...register("password", {required: true,})} />
+
+        <Button type="submit" className="w-full"> Sing in</Button>
+       
        </div>
         </form>
       </div>
